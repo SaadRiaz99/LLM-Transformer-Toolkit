@@ -1,0 +1,11 @@
+[project]
+name = "minigpt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "torch[cpu]==2.9.1",
+    "torchaudio[cpu]==2.9.1",
+    "torchvision[cpu]==0.24.1",
+]
