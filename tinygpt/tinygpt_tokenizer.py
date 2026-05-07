@@ -11,23 +11,22 @@ print("GPU name:", torch.cuda.get_device_name(0) if torch.cuda.is_available() el
 
 
 
-with open("cursor.txt" , "r" , enconding = "utf-8") as f:
+with open("cursor.txt", "r", encoding="utf-8") as f:
     text = f.read()
-    print
+    
 
 
 
-spm.sentencepiecetrainer.train(
-    imput="cursor.txt",
-    modle_prefix = "tokenizer",
-    vocab_size = 42,
-    model_type = "bpe"
+spm.SentencePieceTrainer.train(
+    input="cursor.txt",
+    model_prefix="tokenizer",
+    vocab_size=42,
+    model_type="bpe"
 )
-sp - spm.SentencePieceProcessor()
+sp = spm.SentencePieceProcessor()
 sp.load("tokenizer.model")
-
-
-ids = sp.encode(text , encode_type = int)
+ids = sp.encode(text, out_type=int)
+data_tensor = torch.tensor(ids, dtype=torch.long)
 # ---------- DATA ----------
 # data = [
 #     "Pakistan is a beautiful country with a rich history and culture.",

@@ -356,10 +356,18 @@ version = "0.1.0"
 source = { virtual = "tinygpt" }
 dependencies = [
     { name = "sentencepiece" },
+    { name = "torch" },
+    { name = "torchaudio" },
+    { name = "torchvision" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "sentencepiece", specifier = ">=0.2.1" }]
+requires-dist = [
+    { name = "sentencepiece", specifier = ">=0.2.1" },
+    { name = "torch", extras = ["cpu"], specifier = "==2.9.1" },
+    { name = "torchaudio", extras = ["cpu"], specifier = "==2.9.1" },
+    { name = "torchvision", extras = ["cpu"], specifier = "==0.24.1" },
+]
 
 [[package]]
 name = "torch"
