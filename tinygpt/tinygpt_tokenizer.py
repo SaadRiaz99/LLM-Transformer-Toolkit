@@ -2,11 +2,32 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import random
+import sentencepiece as spm
+
 
 print("Torch version:", torch.__version__)
 print("CUDA available:", torch.cuda.is_available())
 print("GPU name:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None")
 
+
+
+with open("cursor.txt" , "r" , enconding = "utf-8") as f:
+    text = f.read()
+    print
+
+
+
+spm.sentencepiecetrainer.train(
+    imput="cursor.txt",
+    modle_prefix = "tokenizer",
+    vocab_size = 42,
+    model_type = "bpe"
+)
+sp - spm.SentencePieceProcessor()
+sp.load("tokenizer.model")
+
+
+ids = sp.encode(text , encode_type = int)
 # ---------- DATA ----------
 # data = [
 #     "Pakistan is a beautiful country with a rich history and culture.",
